@@ -125,8 +125,7 @@ end
 def add_score(path)
   points = 0
   path[:players].each{|indplayer|
-    points += indplayer[:points]
-  }
+    points += indplayer[:points]}
   points
 end
 
