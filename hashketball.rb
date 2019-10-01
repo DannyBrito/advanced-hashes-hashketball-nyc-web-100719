@@ -93,7 +93,9 @@ def iterrate_for(name, char)
   }
 end
 
-def player_with_most()
+def player_with_most(attribute)
+  player_name = nil
+  player_attribute = 0 
   
 end
 
