@@ -141,7 +141,7 @@ end
 def long_name_steals_a_ton?
 actual_steals = steals
 longest_name = player_with_longest_name
-return true if player_stats(longest_name)[:steals] == actual_steals
+return true if longest_name== actual_steals
 false
 end
   
