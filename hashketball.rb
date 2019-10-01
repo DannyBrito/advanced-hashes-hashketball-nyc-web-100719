@@ -91,7 +91,11 @@ def iterrate_for(name, char)
       return indplayer[char] if indplayer[:player_name] == name
     }
   }
-end 
+end
+
+def player_with_most()
+  
+end
 
 def most_points_scored
   player = nil
