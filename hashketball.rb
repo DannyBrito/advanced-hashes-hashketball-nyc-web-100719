@@ -102,9 +102,14 @@ def player_with_most(attribute)
       if player[attribute].length > player_attribute
         player_attribute = player[attribute].length
         player_name = player[:player_name]
+      end
+    elsif player[attribute] > player_attribute
+      player_attribute = player[attribute]
+      player_name = player[:player_name]
+    end
     }
-    
   }
+  player_name
 end
 
 def most_points_scored
