@@ -113,20 +113,7 @@ def player_with_most(attribute)
 end
 
 def most_points_scored
-  player = nil
-  score = nil
-  game_hash.each{|location, team|
-  team[:players].each{|indplayer|
-  if score == nil
-    score = indplayer[:points]
-    player = indplayer[:player_name]
-  elsif indplayer[:points] > score
-  score = indplayer[:points]
-  player= indplayer[:player_name]
-  end
-    }
-  }
-player
+ player_with_most(:points)
 end
 
 def winning_team
@@ -144,17 +131,7 @@ def add_score(path)
 end
 
 def player_with_longest_name
-  longest_name = nil
-  game_hash.each{|location, team|
-  team[:players].each{|indplayer|
-  if longest_name == nil
-    longest_name= indplayer[:player_name]
-  elsif indplayer[:player_name].length > longest_name.length
-  longest_name = indplayer[:player_name]
-  end
-  }
-}
-longest_name
+player_with_most(:player_name)
 end
 
 def steals
