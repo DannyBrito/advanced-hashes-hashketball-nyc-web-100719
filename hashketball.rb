@@ -87,7 +87,7 @@ end
 
 def iterrate_for(name, char)
   game_hash.each{|location, team|
-    team[:players].each{{|indplayer|
+    team[:players].each{|indplayer|
       return indplayer[char] if indplayer[:player_name] == name
     }
   }
