@@ -135,17 +135,7 @@ player_with_most(:player_name)
 end
 
 def steals
-  big_steal = nil
-  game_hash.each{|location, team|
-  team[:players].each{|indplayer|
-  if big_steal == nil
-    big_steal= indplayer[:steals]
-  elsif indplayer[:steals] > big_steal
-    big_steal = indplayer[:steals]
-  end
-  }
-}
-big_steal
+player_with_most(:steals)
 end
 
 def long_name_steals_a_ton?
