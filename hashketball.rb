@@ -7,26 +7,31 @@ def game_hash
 end
 
 def num_points_scored(player)
-  game_hash[:home][:players].each{|ind_play|
-    return ind_play[:points] if ind_play[:player_name] == player
-  }
-  game_hash[:away][:players].each{|ind_play|
-    return ind_play[:points] if ind_play[:player_name] == player
+  game_hash.each{|location, team|
+    team.each{|attribute, val|
+    next unless attribute == :players
+      val.each{|ind_play|
+        return ind_play[:points] if ind_play[:player_name]==player
+      }
+    }
   }
 end 
 
 def shoe_size(player)
-  game_hash[:home][:players].each{|ind_play|
-    return ind_play[:shoe] if ind_play[:player_name] == player
-  }
-  game_hash[:away][:players].each{|ind_play|
-    return ind_play[:shoe] if ind_play[:player_name] == player
+  game_hash.each{|location, team|
+    team.each{|attribute, val|
+    next unless attribute == :players
+      val.each{|ind_play|
+      return ind_play[:shoe] if ind_play[:player_name] == player
+      }
+    }
   }
 end
 
 def team_colors(team)
-  return game_hash[:home][:colors] if game_hash[:home][:team_name] == team
-  return game_hash[:away][:colors] if game_hash[:away][:team_name]== team
+  game_hash.each{|location,teams|
+  return game_hash[location][:colors] if teams[:team_name] == team
+  }
 end 
 
 def team_names
@@ -53,12 +58,10 @@ end
 def player_stats(player)
   player_data ={}
   game_hash.each{|ind, other|
-  other[:players].each{|indplay|
-  if indplay[:player_name] == player
-  player_data = indplay
-  player_data.delete(:player_name)
-  end
-  }
+    other[:players].each{|indplay|
+    next unless indplay[:player_name] == player
+    player_data = indplay.delete_if{|k, v| k ==:player_name}
+    }
   }
   player_data
 end
@@ -79,6 +82,16 @@ game_hash.each{|location, team|
 }
 player_stats(play_w_biggest_s)[:rebounds]
 end
+
+ ##################################################################
+
+def iterrate_for(name, char)
+  game_hash.each{|location, team|
+    team[:players].each{{|indplayer|
+      return indplayer[char] if indplayer[:player_name] == name
+    }
+  }
+end 
 
 def most_points_scored
   player = nil
