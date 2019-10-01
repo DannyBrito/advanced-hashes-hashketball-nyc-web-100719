@@ -97,7 +97,9 @@ def player_with_most(attribute)
   player_name = nil
   player_attribute = 0 
   game_hash.each{|location,team|
-  
+    team[:players].each{|player|
+    if player[attribute].is_a? String
+    }
     
   }
 end
